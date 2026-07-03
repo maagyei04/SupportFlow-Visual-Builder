@@ -13,8 +13,8 @@ export function Connectors({ nodes }: Props) {
     const arrows: { d: string; key: string }[] = []
 
     nodes.forEach((node) => {
-        const total = node.options.length
-        node.options.forEach((option, idx) => {
+        const total = (node.options || []).length
+        ;(node.options || []).forEach((option, idx) => {
             const target = nodeMap.get(option.nextId)
             if (!target) return
 

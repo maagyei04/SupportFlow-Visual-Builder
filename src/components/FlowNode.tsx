@@ -74,9 +74,9 @@ export function FlowNode({ node, isSelected, isMatched, isDimmed, onClick }: Pro
                 {node.text}
             </p>
 
-            {node.options.length > 0 && (
+            {(node.options || []).length > 0 && (
                 <div style={{ marginTop: 10, display: 'flex', gap: 4, flexWrap: 'wrap' }}>
-                    {node.options.map((opt, i) => (
+                    {(node.options || []).map((opt, i) => (
                         <span key={i} style={{ fontSize: 10, color: C.muted, background: 'rgba(27,73,101,0.3)', border: `1px solid ${C.border2}`, borderRadius: 3, padding: '1.5px 6px' }}>
                             {opt.label}
                         </span>

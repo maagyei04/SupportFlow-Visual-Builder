@@ -2,6 +2,10 @@
 
 A visual editor for building customer support chatbot conversation flows. Instead of managing chatbot logic in a spreadsheet, this lets a non-technical product manager see the whole conversation as a flowchart, edit questions in real time, and test-drive the bot before it goes live.
 
+## Live Demo
+
+[supportflow-visual-builder.vercel.app](https://supportflow-visual-builder.vercel.app)
+
 ## The Problem
 
 SupportFlow AI (the client for this challenge) currently configures their chatbot logic through an Excel spreadsheet. It works, but it's error-prone, nobody outside engineering can actually visualize the flow, and updating a single question means digging through rows that don't map cleanly to how a conversation actually branches. This tool replaces that spreadsheet with a canvas; nodes represent each step in the conversation, arrows show where each answer leads, and you can click into any node to edit it directly.
@@ -29,6 +33,20 @@ Open `http://localhost:5173` in your browser.
 - **Inline editing** — click any node to open an edit panel and update its message text live
 - **Preview mode** — simulates the actual bot conversation. Pick an option, move to the next node, see the full conversation trail build up as you go
 - **Node search** *(wildcard feature)* — type a keyword and matching nodes glow while everything else dims, so you can find a specific node instantly in a large flow
+
+## Screenshots
+
+**Canvas view**
+![Canvas view](docs/screenshots/canvas.png)
+
+**Edit panel**
+![Edit panel](docs/screenshots/edit-panel.png)
+
+**Preview mode**
+![Preview mode](docs/screenshots/preview.png)
+
+**Search & Highlight**
+![Search & Highlight](docs/screenshots/search-highlight.png)
 
 ## Architecture Decisions
 

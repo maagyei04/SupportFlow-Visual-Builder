@@ -54,7 +54,7 @@ export function PreviewMode({ currentNode, history, allNodes, onSelectOption, on
                 msgs.push({ role: 'bot', text: n.text })
             } else {
                 const prev = nodeMap.get(history[i - 1])
-                const chosenOpt = prev?.options.find((o) => o.nextId === history[i])
+                const chosenOpt = prev?.options?.find((o) => o.nextId === history[i])
                 if (chosenOpt) msgs.push({ role: 'user', text: chosenOpt.label })
                 msgs.push({ role: 'bot', text: n.text })
             }
@@ -117,11 +117,11 @@ export function PreviewMode({ currentNode, history, allNodes, onSelectOption, on
                     <div ref={bottomRef} />
                 </div>
 
-                {!ended && currentNode.options.length > 0 && (
+                {!ended && (currentNode.options || []).length > 0 && (
                     <div style={{ padding: '10px 14px 14px', borderTop: `1px solid ${C.border}`, display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0 }}>
                         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9.5, color: C.dim, letterSpacing: '0.06em' }}>CHOOSE A REPLY</span>
                         <div style={{ height: 6 }} />
-                        {currentNode.options.map((opt, i) => (
+                        {(currentNode.options || []).map((opt, i) => (
                             <OptionBtn key={i} label={opt.label} onClick={() => onSelectOption(opt.nextId)} />
                         ))}
                     </div>

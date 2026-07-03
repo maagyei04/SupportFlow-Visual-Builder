@@ -82,11 +82,11 @@ export function EditPanel({ node, onUpdateText, onClose }: Props) {
                     />
                 </div>
 
-                {node.options.length > 0 && (
+                {(node.options || []).length > 0 && (
                     <div style={{ marginBottom: 20 }}>
-                        <FieldLabel>OPTIONS · {node.options.length}</FieldLabel>
+                        <FieldLabel>OPTIONS · {(node.options || []).length}</FieldLabel>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-                            {node.options.map((opt, i) => (
+                            {(node.options || []).map((opt, i) => (
                                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(27,73,101,0.18)', border: `1px solid ${C.border2}`, borderRadius: 6, padding: '8px 10px' }}>
                                     <span style={{ fontSize: 12, color: C.sub, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                         {opt.label}
@@ -105,7 +105,7 @@ export function EditPanel({ node, onUpdateText, onClose }: Props) {
 
                 <FieldLabel>METADATA</FieldLabel>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    {[['id', node.id], ['type', node.type], ['outputs', String(node.options.length)]].map(([k, v]) => (
+                    {[['id', node.id], ['type', node.type], ['outputs', String((node.options || []).length)]].map(([k, v]) => (
                         <div key={k} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: C.dim, width: 54, flexShrink: 0 }}>{k}</span>
                             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#3d6a82' }}>{v}</span>
