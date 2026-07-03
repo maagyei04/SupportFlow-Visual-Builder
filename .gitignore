@@ -29,3 +29,10 @@ dist-ssr
 .aider*
 CLAUDE.md
 .agent/
+.gemini/
+.antigravity/
+.copilot/
+.github/copilot-instructions.md
+*.ai-context
+.windsurf/
+.continue/
