@@ -1,5 +1,6 @@
 import type { FlowNode as FlowNodeType } from '../types/flow'
 import { FlowNode } from './FlowNode'
+import { Connectors } from './Connectors'
 
 interface Props {
     nodes: FlowNodeType[]
@@ -22,6 +23,7 @@ export function Canvas({ nodes, selectedNodeId, onSelectNode, canvasSize }: Prop
                 overflow: 'auto',
             }}
         >
+            <Connectors nodes={nodes} />
             {nodes.map((node) => (
                 <FlowNode
                     key={node.id}
