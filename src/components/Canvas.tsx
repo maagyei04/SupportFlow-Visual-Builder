@@ -7,9 +7,18 @@ interface Props {
     selectedNodeId: string | null
     onSelectNode: (id: string) => void
     canvasSize: { w: number; h: number }
+    matchedNodeIds: Set<string>
+    isSearching: boolean
 }
 
-export function Canvas({ nodes, selectedNodeId, onSelectNode, canvasSize }: Props) {
+export function Canvas({
+    nodes,
+    selectedNodeId,
+    onSelectNode,
+    canvasSize,
+    matchedNodeIds,
+    isSearching,
+}: Props) {
     return (
         <div
             style={{
@@ -29,6 +38,8 @@ export function Canvas({ nodes, selectedNodeId, onSelectNode, canvasSize }: Prop
                     key={node.id}
                     node={node}
                     isSelected={node.id === selectedNodeId}
+                    isMatched={matchedNodeIds.has(node.id)}
+                    isDimmed={isSearching && !matchedNodeIds.has(node.id)}
                     onClick={onSelectNode}
                 />
             ))}

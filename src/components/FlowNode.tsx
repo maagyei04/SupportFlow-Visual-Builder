@@ -3,6 +3,8 @@ import type { FlowNode as FlowNodeType } from '../types/flow'
 interface Props {
     node: FlowNodeType
     isSelected: boolean
+    isMatched: boolean
+    isDimmed: boolean
     onClick: (id: string) => void
 }
 
@@ -12,7 +14,7 @@ const typeColors: Record<string, string> = {
     end: '#ef4444',
 }
 
-export function FlowNode({ node, isSelected, onClick }: Props) {
+export function FlowNode({ node, isSelected, isMatched, isDimmed, onClick }: Props) {
     return (
         <div
             onClick={() => onClick(node.id)}
@@ -26,7 +28,13 @@ export function FlowNode({ node, isSelected, onClick }: Props) {
                 background: '#1a1d29',
                 border: `2px solid ${isSelected ? '#f59e0b' : typeColors[node.type]}`,
                 cursor: 'pointer',
-                boxShadow: isSelected ? '0 0 0 3px rgba(245,158,11,0.2)' : 'none',
+                opacity: isDimmed ? 0.35 : 1,
+                boxShadow: isSelected
+                    ? '0 0 0 3px rgba(245,158,11,0.2)'
+                    : isMatched
+                        ? '0 0 0 4px rgba(245,158,11,0.4), 0 0 20px rgba(245,158,11,0.5)'
+                        : 'none',
+                transition: 'opacity 0.2s, box-shadow 0.2s',
             }}
         >
             <div

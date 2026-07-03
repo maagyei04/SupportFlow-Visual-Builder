@@ -12,9 +12,20 @@ export function useFlowState() {
     const [mode, setMode] = useState<Mode>('edit')
     const [previewNodeId, setPreviewNodeId] = useState<string>('1')
     const [previewHistory, setPreviewHistory] = useState<string[]>(['1'])
+    const [searchQuery, setSearchQuery] = useState('')
 
     const selectedNode = nodes.find((n) => n.id === selectedNodeId) ?? null
     const previewNode = nodes.find((n) => n.id === previewNodeId) ?? null
+
+    const matchedNodeIds = new Set(
+        searchQuery.trim().length > 0
+            ? nodes
+                .filter((n) =>
+                    n.text.toLowerCase().includes(searchQuery.toLowerCase())
+                )
+                .map((n) => n.id)
+            : []
+    )
 
     function updateNodeText(id: string, newText: string) {
         setNodes((prev) =>
@@ -48,5 +59,8 @@ export function useFlowState() {
         previewHistory,
         goToPreviewNode,
         restartPreview,
+        searchQuery,
+        setSearchQuery,
+        matchedNodeIds,
     }
 }

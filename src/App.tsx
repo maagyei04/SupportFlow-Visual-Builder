@@ -2,6 +2,7 @@ import { useFlowState } from './hooks/useFlowState'
 import { Canvas } from './components/Canvas'
 import { EditPanel } from './components/EditPanel'
 import { PreviewMode } from './components/PreviewMode'
+import { SearchBar } from './components/SearchBar'
 
 function App() {
   const {
@@ -16,6 +17,9 @@ function App() {
     previewHistory,
     goToPreviewNode,
     restartPreview,
+    searchQuery,
+    setSearchQuery,
+    matchedNodeIds,
   } = useFlowState()
 
   return (
@@ -57,11 +61,18 @@ function App() {
 
       {mode === 'edit' ? (
         <>
+          <SearchBar
+            value={searchQuery}
+            onChange={setSearchQuery}
+            resultCount={matchedNodeIds.size}
+          />
           <Canvas
             nodes={nodes}
             selectedNodeId={selectedNode?.id ?? null}
             onSelectNode={selectNode}
             canvasSize={canvasSize}
+            matchedNodeIds={matchedNodeIds}
+            isSearching={searchQuery.trim().length > 0}
           />
           <EditPanel
             node={selectedNode}
