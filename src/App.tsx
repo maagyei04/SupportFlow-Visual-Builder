@@ -1,8 +1,9 @@
 import { useFlowState } from './hooks/useFlowState'
 import { Canvas } from './components/Canvas'
+import { EditPanel } from './components/EditPanel'
 
 function App() {
-  const { nodes, selectedNode, selectNode, canvasSize } = useFlowState()
+  const { nodes, selectedNode, selectNode, canvasSize, updateNodeText } = useFlowState()
 
   return (
     <div style={{ padding: 24 }}>
@@ -12,6 +13,11 @@ function App() {
         selectedNodeId={selectedNode?.id ?? null}
         onSelectNode={selectNode}
         canvasSize={canvasSize}
+      />
+      <EditPanel
+        node={selectedNode}
+        onUpdateText={updateNodeText}
+        onClose={() => selectNode(null)}
       />
     </div>
   )
