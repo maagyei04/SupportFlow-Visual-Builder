@@ -10,8 +10,11 @@ export function useFlowState() {
     )
     const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
     const [mode, setMode] = useState<Mode>('edit')
+    const [previewNodeId, setPreviewNodeId] = useState<string>('1')
+    const [previewHistory, setPreviewHistory] = useState<string[]>(['1'])
 
     const selectedNode = nodes.find((n) => n.id === selectedNodeId) ?? null
+    const previewNode = nodes.find((n) => n.id === previewNodeId) ?? null
 
     function updateNodeText(id: string, newText: string) {
         setNodes((prev) =>
@@ -23,6 +26,16 @@ export function useFlowState() {
         setSelectedNodeId(id)
     }
 
+    function goToPreviewNode(id: string) {
+        setPreviewNodeId(id)
+        setPreviewHistory((prev) => [...prev, id])
+    }
+
+    function restartPreview() {
+        setPreviewNodeId('1')
+        setPreviewHistory(['1'])
+    }
+
     return {
         nodes,
         selectedNode,
@@ -31,5 +44,9 @@ export function useFlowState() {
         mode,
         setMode,
         canvasSize: (flowData as FlowData).meta.canvas_size,
+        previewNode,
+        previewHistory,
+        goToPreviewNode,
+        restartPreview,
     }
 }
