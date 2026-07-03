@@ -4,7 +4,7 @@ A visual editor for building customer support chatbot conversation flows. Instea
 
 ## Live Demo
 
-[supportflow-visual-builder.vercel.app](https://supportflow-visual-builder.vercel.app)
+[support-flow-visual-builder-zeta.vercel.app](https://support-flow-visual-builder-zeta.vercel.app/)
 
 ## The Problem
 
