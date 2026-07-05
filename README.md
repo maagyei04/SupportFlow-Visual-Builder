@@ -66,7 +66,7 @@ Type a keyword into the search bar and any node whose text matches gets a highli
 
 ## Design
 
-Figma file: https://www.figma.com/make/EkI2LgmmKhgjNQiJ6s9I7W/Dark-mode-UI-for-SupportFlow?t=PkdulnAA8TsNbYyh-1
+Figma file: https://www.figma.com/design/mmwlhloofkybvPXzSPaE3m/Support-Flow-Visual-Builder?node-id=0-1&t=QGiSZAw9w48tQp7G-1
 
 The design frames cover the canvas view, the edit panel, and the preview/chat mode; the same three states the built app moves between.
 
